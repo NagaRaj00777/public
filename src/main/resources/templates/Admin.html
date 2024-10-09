@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        .header {
+            background-color: rgb(0, 255, 64);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        /* Navigation bar styling */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        /* Add more styles and components for your dashboard here */
+    </style>
+    
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        
+          footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <h1>ADMIN Dashboard</h1>
+    
+    </div>
+
+  
+    <nav>
+    <ul>
+        <li><a href="#post-job">Post Job</a></li>
+        <li><a href="#manage-applications">Manage Applications</a></li>
+        <li><a href="#track-work-hours">Track Work Hours</a></li>
+        
+        
+         <div class="navbar">
+         <span sec:authorize="isAuthenticated">
+            <a th:href="@{/logout}" style="float: right;">Logout</a>
+        </span>
+    </div>
+        
+    </ul>
+</nav>
+        <!-- Main content container -->
+    <div class="container">
+        <h2>Welcome, [[${user.getFullname()}]]</h2>
+        <!-- Add more sections and components to the dashboard here -->
+    </div>
+<main>
+   <div class="w3-container">
+  <h2>Cards</h2>
+  <p>Create paper-like cards with the w3-card classes:</p>
+
+  <div class="w3-panel w3-card"><p>w3-card</p></div>
+  <div class="w3-panel w3-card-2"><p>w3-card-2</p></div>
+  <div class="w3-panel w3-card-4"><p>w3-card-4</p></div>
+</div>
+</div>
+    <!-- Post Job Section -->
+    <section id="post-job">
+        <h2>Post a Work-Study Job</h2>
+        <form id="postJobForm">
+            <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Job Description</label>
+                <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="skillsRequired">Skills Required</label>
+                <input type="text" id="skillsRequired" name="skillsRequired" required>
+            </div>
+            <div class="form-group">
+                <label for="applicationDeadline">Application Deadline</label>
+                <input type="date" id="applicationDeadline" name="applicationDeadline" required>
+            </div>
+            <button type="submit">Post Job</button>
+        </form>
+    </section>
+
+    <!-- Manage Applications Section -->
+    <section id="manage-applications">
+        <h2>Manage Applications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Applicant Name</th>
+                    <th>Application Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be inserted here -->
+                <tr>
+                    <td>Web Developer</td>
+                    <td>John Doe</td>
+                    <td>2024-09-01</td>
+                    <td>Pending</td>
+                    <td>
+                        <button>Accept</button>
+                        <button>Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Track Work Hours Section -->
+    <section id="track-work-hours">
+        <h2>Track Student Work Hours</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Student Name</th>
+                    <th>Hours Worked</th>
+                    <th>Date</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be inserted here -->
+                <tr>
+                    <td>Web Developer</td>
+                    <td>Jane Doe</td>
+                    <td>5</td>
+                    <td>2024-09-01</td>
+                    <td><button>Add Feedback</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    
+ <footer>
+    <p>&copy; 2024 Student Work-Study Management. All rights reserved.</p>
+</footer>
+</body>
+</html>

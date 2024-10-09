@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: 	#ffffff;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: rgb(0, 255, 64);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: 	#ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+
+        h2 {
+            color:#000000;
+        }
+        
+        
+         footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        
+
+        /* Add more styles and components for your dashboard here */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Student Dashboard</h1>
+    </div>
+    
+     <nav>
+    <ul>
+        <li><a href="#apply-job">Apply for Jobs</a></li>
+        <li><a href="#track-applications">Track Applications</a></li>
+        <li><a href="#log-work-hours">Log Work Hours</a></li>
+        
+        
+         <div class="navbar">
+         <span sec:authorize="isAuthenticated">
+            <a th:href="@{/logout}" style="float: right;">Logout</a>
+        </span>
+    </div>
+        
+    </ul>
+</nav>
+    <div class="container">
+        <h2>Welcome, [[${user.getFullname()}]]</h2>
+        
+        <span sec:authorize="isAuthenticated">
+        <a th:href="@{/logout}">
+         Logout
+        
+        </a>
+        
+        </span>
+
+
+    </div>
+    
+    
+    <main>
+
+    <!-- Apply for Jobs Section -->
+    <section id="apply-job">
+        <h2>Available Jobs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Description</th>
+                    <th>Skills Required</th>
+                    <th>Application Deadline</th>
+                    <th>Apply</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Web Developer</td>
+                    <td>Developing and maintaining websites</td>
+                    <td>HTML, CSS, JavaScript</td>
+                    <td>2024-09-10</td>
+                    <td><button>Apply</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Track Applications Section -->
+    <section id="track-applications">
+        <h2>Track Applications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Application Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Web Developer</td>
+                    <td>2024-09-01</td>
+                    <td>Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    
+   
+    
+    
+    <footer>
+    <p>&copy; 2024 Student Work-Study Management. All rights reserved.</p>
+</footer>
+</body>
+</html>
